@@ -1,0 +1,28 @@
+<?page title="Home" contentType="text/html;charset=UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<?link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" ?>
+
+<?link rel="stylesheet" type="text/css" href="/css/dataTables.bootstrap.min.css" ?>
+<?link rel="stylesheet" type="text/css" href="/css/formularios.css" ?>
+<?link rel="stylesheet" type="text/css" href="/css/custom.css" ?>
+<?link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css" ?>
+
+
+
+<zk xmlns:n="native" xmlns:c="client">
+	<n:div id="notifications"></n:div>
+	<div class="body" viewModel="@id('vm') @init('com.concredito.ventas.viewModel.indexVM')">
+
+			<div class="pp-section section pp-scrollable">
+				<div class="contenedor">
+					<include id="content" />
+				</div>
+			</div>
+
+	</div>
+	<div class="footer footer-id">
+	</div>
+	<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/js/notify.js"></script>
+
+</zk>

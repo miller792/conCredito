@@ -1,0 +1,127 @@
+<?page title="conCredito" contentType="text/html;charset=UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<?link rel="stylesheet" type="text/css" href="../css/bootstrap.css" ?>
+<?link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css" ?>
+<?link rel="stylesheet" type="text/css" href="../css/custom.css" ?>
+<?link rel="stylesheet" type="text/css" href="../css/formularios.css" ?>
+<?script type="text/javascript" src="../js/jquery.min.js"?>
+<?script type="text/javascript" src="../js/notify.js"?>
+<?script src="../js/jquery.min.js"?>
+<zk xmlns:n="native" xmlns:ca="client/attribute" xmlns:w="http://www.zkoss.org/2005/zk/client">
+	<separator></separator>
+	<window  position="center" apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('com.concredito.ventas.viewModel.ventasVM')">
+		<n:div id="notifications"></n:div>
+		<div class="row contenido">
+			<div class=" col-xs-12 col-sm-12 col-md-12 col-lg-12 abs">
+				<div class="x_title">
+					<n:h2>
+						<n:small>Ventas</n:small>
+					</n:h2>
+					<div class="clearfix"></div>
+				</div>
+				<div class="x_panel" style="margin-bottom: 0px !important;">
+					<div class="x_content">
+						<div class="row contenidoInterno">
+						<div class="col-xs-12 col-sm-10 form-group">
+								Folio Venta: 
+								
+								<label value="@load(vm.folio)" width="99%" />
+								
+							</div>
+							<div class="col-xs-12 col-sm-10 form-group">
+								Cliente
+								
+								<combobox placeholder="Clientes" autodrop="true" autocomplete="true"  model="@load(vm.clientes)" selectedItem="@bind(vm.clienteSeleccionado) @save(vm.clienteSeleccionado, before = 'abrirAbonos')"  constraint="no empty" tabindex="1" focus="true" >
+									<template name="model" var="c">
+										<comboitem label="@load(c.codigoNombre)" />
+									</template>
+								</combobox>
+								
+							</div>
+							<div class="col-xs-12 col-sm-2 form-group">
+								RFC:
+								
+								<label value="@bind(vm.clienteSeleccionado.rfc)" width="99%" />
+								
+							</div>
+							<div class="col-xs-11 col-sm-11 form-group">
+								Articulo
+								<combobox  id="cmbArticulo" placeholder="Articulos" autodrop="true" autocomplete="true" model="@load(vm.articulos)" selectedItem="@bind(vm.articuloSeleccionado)"  tabindex="2" >
+									<template name="model" var="a">
+										<comboitem label="@load(a.descripcion)" />
+									</template>
+								</combobox>		
+													
+							</div>
+							<div class="col-xs-1 col-sm-1" style="top: 19px;">
+							<button class="btn btn-default" onClick="@command('agregarProducto')">+</button>	
+							</div>
+							
+							
+						</div>
+						<div class="row contenidoInterno">
+							<grid id="grid" model="@load(vm.ventasDet)" emptyMessage="No se encontraron datos!">
+								<columns height="22px">
+									<column width="330px" label="Descripcion del Articulo"/>
+									<column width="120px" label="Modelo" align="center" />
+									<column width="150px" label="Cantidad" align="center" />
+									<column width="150px" label="Precio" align="center" />
+									<column width="100px" label="Importe" align="center"/>
+									<column width="100px" label="opcion" align="center"/>
+								</columns>
+								<template name="model" val="v">
+									<row>
+										<label value="@bind(each.articulos.descripcion)" width="99%" />
+										<label  value="@bind(each.articulos.modelo)" width="99%"/>
+										<div class='text-center'>
+											<spinner inplace="true" value="@bind(each.cantidad)" width="98%" 
+											onChange="@command('cambiaCantidad', index=pStatus.index, data=each.articulos, data2=each,  event_value=event.value)" />
+										</div>
+										<label value="@load(c:formatNumber(each.precio, '$#,##0.00'))" hflex="min" />
+								
+										<label value="@load(c:formatNumber(each.importe, '$#,##0.00'))" hflex="min" />
+										<button class="btn btn-default" onClick="@command('eliminaPartida',ndex=pStatus.index)">-</button>
+									</row>
+								</template>
+							</grid>
+							
+						</div>
+
+
+					</div>
+					
+					<div class="x_content">
+
+						<div class="container" style="text-align:right;margin-bottom: 50px;">
+							<div class="col-xs-12 form-group">
+								Enganche
+								<doublebox class="puroTexto precio_color" value="@load(vm.ventasEnc.enganche)" locale="en"
+									format="$#,##0.00" readonly="true" disabled="true" roundingMode="UNNECESSARY" >
+								</doublebox>
+							</div>
+							<div class="col-xs-12 form-group">
+								Bonificación
+								<doublebox class="puroTexto precio_color" value="@load(vm.ventasEnc.bonificacion)" locale="en"
+									format="$#,##0.00" readonly="true" disabled="true" roundingMode="UNNECESSARY" >
+								</doublebox>
+							</div>
+							<div class="col-xs-12 form-group">
+								Total
+								<doublebox class="puroTexto precio_color" value="@load(vm.ventasEnc.total)" locale="en" format="$#,##0.00"
+									readonly="true" disabled="true" roundingMode="UNNECESSARY" >
+								</doublebox>
+							</div>
+						</div>
+
+
+					</div>
+				</div>
+				<div style="float: right;">
+				<button class="btn btn-default" onClick="@command('irCatalogo')">Cancelar</button>
+				<button class="btn btn-default" onClick="@command('abrirAbonos')">Siguiente</button>
+				</div>
+			</div>
+		</div>
+	</window>
+</zk>

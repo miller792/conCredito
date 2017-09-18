@@ -1,0 +1,55 @@
+<?page title="Change Password" contentType="text/html;charset=UTF-8"?>
+<zk xmlns:n="native" xmlns:ca="client/attribute">
+	<window id="window" mode="modal" title="Abonos Mensuales" closable="true" onClose="@command('close')" contentStyle="overflow:auto;" width="auto"
+		height="290px" viewModel="@id('vm') @init('com.concredito.ventas.viewModel.AbonosVM')" action="show: slideDown;hide: slideUp"
+		apply="org.zkoss.bind.BindComposer">
+		<div>
+			<div class="col-md-12 col-sm-12 col-xs-12" style="padding:0;">
+				<div class="">
+					<radiogroup id="row" />
+					<div class=" col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+						<div class="table-responsive col-xs-12 col-sm-12 col-md-12 col-lg-12" id="divTabla">
+							<grid id="grid" model="@load(vm.abonos)" emptyMessage="No se encontraron datos!">
+								<columns height="22px">
+									<column width="330px" label="Abonos" hflex="min"/>
+									<column width="120px" label="Importe Abono" align="center" hflex="min"/>
+									<column width="150px" label="Total a Pagar" align="center" hflex="min"/>
+									<column width="150px" label="Ahorra" align="center" hflex="min"/>
+									<column width="100px" label="" align="center" hflex="min">
+									</column>
+								</columns>
+								<template name="model" var="a">
+									<row>
+									<hlayout >
+                                	    <label value="@load(a.plazo)" hflex="min" /> ABONOS DE 
+                               		 </hlayout>
+                               		 <label value="@load(c:formatNumber(a.importeAbono, '$#,##0.00'))" hflex="min" />
+                               		 <hlayout >
+                               			 TOTAL A PAGAR: 
+                               		 	<label value="@load(c:formatNumber(a.totalPagar, '$#,##0.00'))" hflex="min" />
+                               		 </hlayout>
+                               		 <hlayout>
+                               		 	SE AHORRA:
+                               		 	<label value="@load(c:formatNumber(a.importeAhorra, '$#,##0.00'))" hflex="min" />
+                               		 </hlayout>
+									<radio  radiogroup="row" onCheck="@command('seleccionaRow', data=a)" />
+										
+									</row>
+								</template>
+							</grid>
+
+						</div>
+
+					</div>
+					<div style="float: right;">
+						<button class="btn btn-default" onClick="@command('guardar')">Guardar</button>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+
+		<script src="../js/tables.js"></script>
+	</window>
+</zk>
