@@ -869,7 +869,7 @@ table>z-label {
 }
 
 .z-grid-body {
-	/* 	overflow: hidden !important; */
+    overflow: scroll !important;
 	
 }
 
