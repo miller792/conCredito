@@ -102,6 +102,15 @@ public class AbonosVM {
 	    importeAhorra = totalAdeudo-totalPagar;
 	    importeAhorra = Utilerias.redondear(importeAhorra, 2);
 	    AbonosJson abono = new AbonosJson();
+	    if (totalPagar < 0D) {
+			totalPagar = 0D;
+		}
+	    if (importeAbono < 0D) {
+			importeAbono = 0D;
+		}
+	    if (importeAhorra < 0D) {
+	    	importeAhorra = 0D;
+		}
 	    abono.setTotalPagar(totalPagar);
 	    abono.setImporteAhorra(importeAhorra);
 	    abono.setImporteAbono(importeAbono);

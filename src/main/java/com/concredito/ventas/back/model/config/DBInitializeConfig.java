@@ -72,9 +72,13 @@ public class DBInitializeConfig {
 			///Productos
 			statement.executeUpdate(
 					"INSERT INTO confGeneral (conf_id, tasa_financiamiento, porcentaje_enganche, plazo_maximo) VALUES ('1', '2.8', '20', '12')");
-			statement.executeUpdate("INSERT INTO articulos (articulo_id, descripcion, modelo, precio, existencia) VALUES ('1', 'Articulo 1', 'modelo 5', '4250', '3')");
-			statement.executeUpdate("INSERT INTO articulos (articulo_id, descripcion, modelo, precio, existencia) VALUES ('2', 'Articulo 2', 'modelo 5', '4250', '30')");
-			statement.executeUpdate("INSERT INTO articulos (articulo_id, descripcion, modelo, precio, existencia) VALUES ('3', 'Articulo 3', 'modelo 5', '4250', '32')");
+			statement.executeUpdate("INSERT INTO articulos (articulo_id, descripcion, modelo, precio, existencia) VALUES ('1', 'Articulo 1', 'modelo 5', '4250', '10')");
+			statement.executeUpdate("INSERT INTO articulos (articulo_id, descripcion, modelo, precio, existencia) VALUES ('2', 'Articulo 2', 'modelo 2', '10', '30')");
+			statement.executeUpdate("INSERT INTO articulos (articulo_id, descripcion, modelo, precio, existencia) VALUES ('3', 'Articulo 3', 'modelo 3', '800', '32')");
+			statement.executeUpdate("INSERT INTO articulos (articulo_id, descripcion, modelo, precio, existencia) VALUES ('4', 'Articulo 4', 'modelo 2018', '1', '5')");
+			statement.executeUpdate("INSERT INTO articulos (articulo_id, descripcion, modelo, precio, existencia) VALUES ('5', 'Articulo 5', 'modelo 5000', '20', '20')");
+			statement.executeUpdate("INSERT INTO articulos (articulo_id, descripcion, modelo, precio, existencia) VALUES ('6', 'Articulo 6', 'modelo z', '3000', '2')");
+			statement.executeUpdate("INSERT INTO articulos (articulo_id, descripcion, modelo, precio, existencia) VALUES ('7', 'Articulo 7', 'modelo 2016', '1575', '9')");
 			statement.executeUpdate("INSERT INTO clientes (cliente_id, nombre, apellido_paterno, apellido_materno, rfc) VALUES ('1', 'Ruben', 'Miller', 'Medina', 'MIMR9209072I9')");
 			statement.executeUpdate("INSERT INTO clientes (cliente_id, nombre, apellido_paterno, apellido_materno, rfc) VALUES ('2', 'Adrian', 'Lopez', 'Garcia','LOGA9405051U1')");
 			statement.executeUpdate("INSERT INTO clientes (cliente_id, nombre, apellido_paterno, apellido_materno, rfc) VALUES ('3', 'Victor', 'Cruz', 'Favela','CUFV850101AI9')");
