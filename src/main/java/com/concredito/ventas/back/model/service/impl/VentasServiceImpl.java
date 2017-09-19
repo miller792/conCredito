@@ -152,6 +152,7 @@ public class VentasServiceImpl implements VentasService{
 				venta = new VentasEncJson();
 				cliente = new ClientesJson();
 				cliente.setId(v.getCliente_id());
+				cliente.setCodigo(Utilerias.cerosIzq(3, v.getCliente_id()));
 				cliente.setNombrecompleto(v.getCliente().getNombre()+" "+v.getCliente().getApellidoP() +" "+v.getCliente().getApellidoM());
 				venta.setFolioId(v.getFolio_id());
 				venta.setCliente(cliente);

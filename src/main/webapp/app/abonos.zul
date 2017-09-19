@@ -12,26 +12,25 @@
 						<div class="table-responsive col-xs-12 col-sm-12 col-md-12 col-lg-12" id="divTabla">
 							<grid id="grid" model="@load(vm.abonos)" emptyMessage="No se encontraron datos!">
 								<columns height="22px">
-									<column width="330px" label="Abonos" hflex="min"/>
-									<column width="120px" label="Importe Abono" align="center" hflex="min"/>
-									<column width="150px" label="Total a Pagar" align="center" hflex="min"/>
-									<column width="150px" label="Ahorra" align="center" hflex="min"/>
-									<column width="100px" label="" align="center" hflex="min">
-									</column>
+									<column width="330px" label="Abonos" />
+									<column width="120px" label="Importe Abono" align="center" />
+									<column width="150px" label="Total a Pagar" align="center" />
+									<column width="150px" label="Ahorra" align="center" />
+									<column width="100px" label="" align="center" />
 								</columns>
 								<template name="model" var="a">
 									<row>
 									<hlayout >
                                 	    <label value="@load(a.plazo)" hflex="min" /> ABONOS DE 
                                		 </hlayout>
-                               		 <label value="@load(c:formatNumber(a.importeAbono, '$#,##0.00'))" hflex="min" />
+                               		 <label value="@load(c:formatNumber(a.importeAbono, '$#,##0.00'))" />
                                		 <hlayout >
                                			 TOTAL A PAGAR: 
-                               		 	<label value="@load(c:formatNumber(a.totalPagar, '$#,##0.00'))" hflex="min" />
+                               		 	<label value="@load(c:formatNumber(a.totalPagar, '$#,##0.00'))"  />
                                		 </hlayout>
                                		 <hlayout>
                                		 	SE AHORRA:
-                               		 	<label value="@load(c:formatNumber(a.importeAhorra, '$#,##0.00'))" hflex="min" />
+                               		 	<label value="@load(c:formatNumber(a.importeAhorra, '$#,##0.00'))"  />
                                		 </hlayout>
 									<radio  radiogroup="row" onCheck="@command('seleccionaRow', data=a)" />
 										

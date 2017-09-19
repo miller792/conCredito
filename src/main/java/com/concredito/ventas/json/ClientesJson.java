@@ -28,6 +28,8 @@ public class ClientesJson implements Serializable {
 	private String codigoNombre;
 	
 	private String nombreCompleto;
+	
+	private String codigo;
 
 	public Integer getId() {
 		return id;
@@ -87,6 +89,18 @@ public class ClientesJson implements Serializable {
 
 	public void setNombrecompleto(String nombreCompleto) {
 		this.nombreCompleto = nombreCompleto;
+	}
+
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setNombreCompleto(String nombreCompleto) {
+		this.nombreCompleto = nombreCompleto;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 
 }

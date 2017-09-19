@@ -66,7 +66,7 @@
 										<label
 											value="@load(each.folioId)" hflex="min" />
 										<label
-											value="@load(each.cliente.id)" hflex="min" />
+											value="@load(each.cliente.codigo)" hflex="min" />
 										<label
 											value="@load(each.cliente.nombreCompleto)" hflex="min" />
 										<label
